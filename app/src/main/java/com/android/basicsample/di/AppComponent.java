@@ -20,21 +20,21 @@ import android.app.Application;
 import com.android.basicsample.GithubApp;
 import dagger.BindsInstance;
 import dagger.Component;
-import dagger.android.AndroidInjectionModule;
+import dagger.android.AndroidInjector;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 import javax.inject.Singleton;
 
 @Singleton
 @Component(modules = {
-        AndroidInjectionModule.class,
+        AndroidSupportInjectionModule.class,
         AppModule.class,
         MainActivityModule.class
 })
-public interface AppComponent {
+public interface AppComponent extends AndroidInjector<GithubApp> {
     @Component.Builder
     interface Builder {
         @BindsInstance Builder application(Application application);
         AppComponent build();
     }
-    void inject(GithubApp githubApp);
 }

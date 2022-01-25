@@ -48,7 +48,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.4.0'
 
     //Dagger 2
-    def dagger2_version = "2.16"
+    def dagger2_version = "2.40.5"
     implementation "com.google.dagger:dagger:$dagger2_version"
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
     implementation "com.google.dagger:dagger-android:$dagger2_version"

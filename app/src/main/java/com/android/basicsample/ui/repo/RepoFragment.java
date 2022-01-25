@@ -29,11 +29,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.android.basicsample.R;
 import com.android.basicsample.binding.FragmentDataBindingComponent;
 import com.android.basicsample.databinding.RepoFragmentBinding;
-import com.android.basicsample.di.Injectable;
 import com.android.basicsample.ui.common.NavigationController;
 import com.android.basicsample.util.AutoClearedValue;
 import com.android.basicsample.vo.Repo;
 import com.android.basicsample.vo.Resource;
+import dagger.android.support.DaggerFragment;
 
 import javax.inject.Inject;
 import java.util.Collections;
@@ -41,7 +41,7 @@ import java.util.Collections;
 /**
  * The UI Controller for displaying a Github Repo's information with its contributors.
  */
-public class RepoFragment extends Fragment implements Injectable {
+public class RepoFragment extends DaggerFragment {
 
     private static final String REPO_OWNER_KEY = "repo_owner";
 

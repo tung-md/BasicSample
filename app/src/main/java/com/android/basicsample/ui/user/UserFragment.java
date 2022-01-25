@@ -29,14 +29,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.android.basicsample.R;
 import com.android.basicsample.binding.FragmentDataBindingComponent;
 import com.android.basicsample.databinding.UserFragmentBinding;
-import com.android.basicsample.di.Injectable;
 import com.android.basicsample.ui.common.NavigationController;
 import com.android.basicsample.ui.common.RepoListAdapter;
 import com.android.basicsample.util.AutoClearedValue;
+import dagger.android.support.DaggerFragment;
 
 import javax.inject.Inject;
 
-public class UserFragment extends Fragment implements Injectable {
+public class UserFragment extends DaggerFragment {
     private static final String LOGIN_KEY = "login";
     @Inject
     ViewModelProvider.Factory viewModelFactory;

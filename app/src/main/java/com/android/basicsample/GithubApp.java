@@ -16,31 +16,18 @@
 
 package com.android.basicsample;
 
-import android.app.Activity;
-import android.app.Application;
-import com.android.basicsample.di.AppInjector;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
 
-import javax.inject.Inject;
+import com.android.basicsample.di.DaggerAppComponent;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
 
 
-public class GithubApp extends Application implements HasActivityInjector {
-
-    @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+public class GithubApp extends DaggerApplication {
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        if (BuildConfig.DEBUG) {
-            //Timber.plant(new Timber.DebugTree());
-        }
-        AppInjector.init(this);
-    }
-
-    @Override
-    public DispatchingAndroidInjector<Activity> activityInjector() {
-        return dispatchingAndroidInjector;
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerAppComponent.builder().application(this).build();
+//        return null;
     }
 }

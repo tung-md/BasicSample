@@ -18,17 +18,12 @@ package com.android.basicsample;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import com.android.basicsample.ui.common.NavigationController;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.support.HasSupportFragmentInjector;
+import dagger.android.support.DaggerAppCompatActivity;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector {
-    @Inject
-    DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
+public class MainActivity extends DaggerAppCompatActivity {
     @Inject
     NavigationController navigationController;
 
@@ -41,8 +36,4 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         }
     }
 
-    @Override
-    public DispatchingAndroidInjector<Fragment> supportFragmentInjector() {
-        return dispatchingAndroidInjector;
-    }
 }

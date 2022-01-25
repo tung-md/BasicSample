@@ -36,15 +36,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.basicsample.R;
 import com.android.basicsample.binding.FragmentDataBindingComponent;
 import com.android.basicsample.databinding.SearchFragmentBinding;
-import com.android.basicsample.di.Injectable;
 import com.android.basicsample.ui.common.NavigationController;
 import com.android.basicsample.ui.common.RepoListAdapter;
 import com.android.basicsample.util.AutoClearedValue;
 import com.google.android.material.snackbar.Snackbar;
+import dagger.android.support.DaggerFragment;
 
 import javax.inject.Inject;
 
-public class SearchFragment extends Fragment implements Injectable {
+public class SearchFragment extends DaggerFragment {
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
