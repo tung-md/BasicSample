@@ -21,6 +21,7 @@ import androidx.room.Room;
 import com.android.basicsample.api.GithubService;
 import com.android.basicsample.db.GithubDb;
 import com.android.basicsample.db.RepoDao;
+import com.android.basicsample.db.TokenDao;
 import com.android.basicsample.db.UserDao;
 import com.android.basicsample.util.LiveDataCallAdapterFactory;
 import dagger.Module;
@@ -35,7 +36,7 @@ class AppModule {
     @Singleton @Provides
     GithubService provideGithubService() {
         return new Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl("http://192.168.1.92:8000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(new LiveDataCallAdapterFactory())
                 .build()
@@ -55,5 +56,10 @@ class AppModule {
     @Singleton @Provides
     RepoDao provideRepoDao(GithubDb db) {
         return db.repoDao();
+    }
+
+    @Singleton @Provides
+    TokenDao provideTokenDao(GithubDb db) {
+        return db.tokenDao();
     }
 }

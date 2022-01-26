@@ -16,6 +16,7 @@
 
 package com.android.basicsample.di;
 
+import com.android.basicsample.ui.login.LoginFragment;
 import com.android.basicsample.ui.repo.RepoFragment;
 import com.android.basicsample.ui.search.SearchFragment;
 import com.android.basicsample.ui.user.UserFragment;
@@ -24,6 +25,10 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class FragmentBuildersModule {
+
+    @ContributesAndroidInjector
+    abstract LoginFragment contributeLoginFragment();
+
     @ContributesAndroidInjector
     abstract RepoFragment contributeRepoFragment();
 

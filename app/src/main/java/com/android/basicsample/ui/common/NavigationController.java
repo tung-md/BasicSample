@@ -19,6 +19,7 @@ package com.android.basicsample.ui.common;
 import androidx.fragment.app.FragmentManager;
 import com.android.basicsample.MainActivity;
 import com.android.basicsample.R;
+import com.android.basicsample.ui.login.LoginFragment;
 import com.android.basicsample.ui.repo.RepoFragment;
 import com.android.basicsample.ui.search.SearchFragment;
 import com.android.basicsample.ui.user.UserFragment;
@@ -35,6 +36,13 @@ public class NavigationController {
     public NavigationController(MainActivity mainActivity) {
         this.containerId = R.id.container;
         this.fragmentManager = mainActivity.getSupportFragmentManager();
+    }
+
+    public void navigateToLogin() {
+        LoginFragment loginFragment = new LoginFragment();
+        fragmentManager.beginTransaction()
+                .replace(containerId, loginFragment)
+                .commitAllowingStateLoss();
     }
 
     public void navigateToSearch() {

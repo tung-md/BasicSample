@@ -16,24 +16,21 @@
 
 package com.android.basicsample.db;
 
-import androidx.room.Database;
-import androidx.room.RoomDatabase;
-import com.android.basicsample.vo.Contributor;
-import com.android.basicsample.vo.Repo;
-import com.android.basicsample.vo.RepoSearchResult;
-import com.android.basicsample.vo.User;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 import com.android.basicsample.vo.result.Token;
 
 /**
- * Main database description.
+ * Interface for database access for Token related operations.
  */
-@Database(entities = {User.class, Repo.class, Contributor.class,
-        RepoSearchResult.class, Token.class}, version = 3)
-public abstract class GithubDb extends RoomDatabase {
+@Dao
+public interface TokenDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Token token);
 
-    abstract public UserDao userDao();
-
-    abstract public RepoDao repoDao();
-
-    abstract public TokenDao tokenDao();
+    @Query("SELECT * FROM token")
+    LiveData<Token> loadToken();
 }

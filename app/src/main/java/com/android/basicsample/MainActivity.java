@@ -32,7 +32,7 @@ public class MainActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         if (savedInstanceState == null) {
-            navigationController.navigateToSearch();
+            navigationController.navigateToLogin();
         }
     }
 

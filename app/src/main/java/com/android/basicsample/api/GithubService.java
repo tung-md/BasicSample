@@ -20,10 +20,10 @@ import androidx.lifecycle.LiveData;
 import com.android.basicsample.vo.Contributor;
 import com.android.basicsample.vo.Repo;
 import com.android.basicsample.vo.User;
+import com.android.basicsample.vo.request.LoginRequest;
+import com.android.basicsample.vo.result.Token;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 import java.util.List;
 
@@ -31,6 +31,10 @@ import java.util.List;
  * REST API access points
  */
 public interface GithubService {
+
+    @POST("api/auth/login")
+    LiveData<ApiResponse<Token>> login(@Body LoginRequest loginRequest);
+
     @GET("users/{login}")
     LiveData<ApiResponse<User>> getUser(@Path("login") String login);
 
