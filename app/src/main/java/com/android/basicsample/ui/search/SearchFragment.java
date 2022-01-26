@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.DataBindingUtil;
@@ -72,8 +73,9 @@ public class SearchFragment extends DaggerFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         searchViewModel = new ViewModelProvider(this, viewModelFactory).get(SearchViewModel.class);
         initRecyclerView();
         RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent, true,

@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.DataBindingUtil;
@@ -60,8 +61,9 @@ public class RepoFragment extends DaggerFragment {
     AutoClearedValue<ContributorAdapter> adapter;
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         repoViewModel = new ViewModelProvider(this, viewModelFactory).get(RepoViewModel.class);
         Bundle args = getArguments();
         if (args != null && args.containsKey(REPO_OWNER_KEY) &&

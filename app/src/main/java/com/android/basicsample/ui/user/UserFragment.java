@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.databinding.DataBindingComponent;
@@ -33,6 +34,7 @@ import com.android.basicsample.ui.common.NavigationController;
 import com.android.basicsample.ui.common.RepoListAdapter;
 import com.android.basicsample.util.AutoClearedValue;
 import dagger.android.support.DaggerFragment;
+import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
@@ -69,8 +71,9 @@ public class UserFragment extends DaggerFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         userViewModel = new ViewModelProvider(this, viewModelFactory).get(UserViewModel.class);
         userViewModel.setLogin(getArguments().getString(LOGIN_KEY));
         userViewModel.getUser().observe(this, userResource -> {
